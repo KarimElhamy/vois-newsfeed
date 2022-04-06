@@ -60,8 +60,6 @@ export const DetailsScreen: React.FC<ItemProps> = ({route}) => {
   const scheme = useColorScheme();
   const navigation = useNavigation();
 
-  console.log('lang in details', global.language);
-
   return (
     <PaperProvider theme={scheme === 'dark' ? darkTheme : lightTheme}>
       {scheme === 'dark' ? (

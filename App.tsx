@@ -5,6 +5,9 @@ import {
   View,
   FlatList,
   Linking,
+  ScrollView,
+  LogBox,
+  VirtualizedList,
 } from 'react-native';
 
 import {getNews, getNewsLang} from './src/news';
@@ -100,12 +103,10 @@ const App = () => {
     setLang(value);
     global.language = value;
     handleRefresh();
-    console.log('the lang selected is', value);
   };
 
   return (
     <PaperProvider theme={scheme === 'dark' ? darkTheme : lightTheme}>
-      {/* <ScrollView> */}
       {scheme === 'dark' ? (
         <SafeAreaView style={{backgroundColor: '#202020', flex: 1}}>
           <View style={{backgroundColor: '#202020'}}>
@@ -172,6 +173,7 @@ const App = () => {
                 }}
               />
             )}
+            {/* <ScrollView> */}
 
             <FlatList
               data={articles}
@@ -181,6 +183,7 @@ const App = () => {
               onRefresh={handleRefresh.bind(this)}
               scrollEnabled={true}
             />
+            {/* </ScrollView> */}
           </View>
         </SafeAreaView>
       ) : (
@@ -250,7 +253,7 @@ const App = () => {
                 }}
               />
             )}
-
+            {/* <ScrollView> */}
             <FlatList
               data={articles}
               renderItem={({item}) => <ArticleFunc article={item} />}
@@ -259,10 +262,10 @@ const App = () => {
               onRefresh={handleRefresh.bind(this)}
               scrollEnabled={true}
             />
+            {/* </ScrollView> */}
           </View>
         </SafeAreaView>
       )}
-      {/* </ScrollView> */}
     </PaperProvider>
   );
 };

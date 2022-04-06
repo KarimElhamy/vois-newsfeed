@@ -43,8 +43,6 @@ const config = {
   },
 };
 
-//newsfeed://path/id
-
 export default function Main() {
   LogBox.ignoreAllLogs();
   const scheme = useColorScheme();

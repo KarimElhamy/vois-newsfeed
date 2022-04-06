@@ -257,7 +257,7 @@ export const DetailsScreen: React.FC<ItemProps> = ({route}) => {
                 </View>
               </Card>
               <TouchableOpacity onPress={() => navigation.goBack()}>
-                {global.language && global.language === 'en' ? (
+                {global.language === 'en' ? (
                   <Text
                     style={{
                       alignContent: 'flex-start',

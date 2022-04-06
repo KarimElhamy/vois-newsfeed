@@ -1,23 +1,17 @@
 import {
   View,
   Linking,
-  TouchableNativeFeedback,
   TouchableOpacity,
-  Pressable,
   useColorScheme,
   ScrollView,
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
-import {Text, Card, Divider, Image} from 'react-native-elements';
+import {Text, Card} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 
-import {
-  Button,
-  DefaultTheme,
-  Provider as PaperProvider,
-} from 'react-native-paper';
-import React, {useState, useContext} from 'react';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import React from 'react';
 
 const darkTheme = {
   ...DefaultTheme,
@@ -59,19 +53,8 @@ export type Info = {
 export const DetailsScreen: React.FC<ItemProps> = ({route}) => {
   const {itemImage, itemTitle, itemAuthor, itemDate, itemUrl, itemDesc} =
     route.params.item;
-  console.log('itemtitlei, ', itemTitle);
-  console.log('test', route.params.item);
-  const {
-    noteStyle,
-    featuredTitleStyle,
-    card,
-    mediaInsetContainer,
-    mediaContainer,
-    cardTitle,
-    cardTitleTextContainer,
-    noteStyleRight,
-    rowContainer,
-  } = styles;
+  const {noteStyle, card, mediaContainer, cardTitle, cardTitleTextContainer} =
+    styles;
   const scheme = useColorScheme();
   const navigation = useNavigation();
 
@@ -101,10 +84,7 @@ export const DetailsScreen: React.FC<ItemProps> = ({route}) => {
                     backgroundColor: '#353535',
                     margin: '5%',
                   },
-                ]}
-                // featuredTitle={itemTitle}
-                // featuredTitleStyle={featuredTitleStyle}
-              >
+                ]}>
                 <View style={{flex: 1, flexDirection: 'column'}}>
                   {!!itemTitle && (
                     <Text
@@ -208,10 +188,7 @@ export const DetailsScreen: React.FC<ItemProps> = ({route}) => {
                     backgroundColor: 'white',
                     margin: '5%',
                   },
-                ]}
-                // featuredTitle={itemTitle}
-                // featuredTitleStyle={featuredTitleStyle}
-              >
+                ]}>
                 <View style={cardTitleTextContainer}>
                   <Text style={[cardTitle, {color: 'black'}]}>{itemTitle}</Text>
                   <View

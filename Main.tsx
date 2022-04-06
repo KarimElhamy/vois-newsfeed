@@ -36,14 +36,14 @@ const lightTheme = {
 
 const Stack = createNativeStackNavigator();
 
-// const config = {
-//   screens: {
-//     App: 'app',
-//     ScreenA: {path: 'a'},
-//     ArticleFun: {path: 'articles'},
-//     DetailsScreen: {path: 'details'},
-//   },
-// };
+const config = {
+  screens: {
+    App: {path: 'app'},
+    ScreenA: {path: 'a'},
+    ArticleFun: {path: 'articles'},
+    DetailsScreen: {path: 'details'},
+  },
+};
 
 export default function Main() {
   LogBox.ignoreAllLogs();
@@ -53,13 +53,7 @@ export default function Main() {
       <NavigationContainer
         linking={{
           prefixes: ['newsfeed://'],
-          config: {
-            screens: {
-              ScreenA: 'sa',
-              App: 'app',
-              DetailsScreen: 'details',
-            },
-          },
+          config,
         }}>
         <Stack.Navigator initialRouteName="App">
           <Stack.Screen
@@ -98,8 +92,6 @@ export default function Main() {
             component={ScreenA}
           />
         </Stack.Navigator>
-
-        {/* <App /> */}
       </NavigationContainer>
     </PaperProvider>
   );

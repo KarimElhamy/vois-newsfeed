@@ -15,11 +15,7 @@ import {
   DefaultTheme,
   Provider as PaperProvider,
 } from 'react-native-paper';
-import React, {useState, useContext} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {StackNavigationProp} from 'react-navigation-stack/lib/typescript/src/vendor/types';
-// import {DetailsStackParamList, navigate} from '../../Main';
+import React from 'react';
 
 const darkTheme = {
   ...DefaultTheme,
@@ -71,7 +67,7 @@ const ArticleFunc = (props: {
 
   const navigation = useNavigation();
 
-  const urlA = 'newsfeedTS://main/a';
+  const urlA = 'newsfeedTS://a';
 
   return (
     <PaperProvider theme={scheme === 'dark' ? darkTheme : lightTheme}>
@@ -96,10 +92,7 @@ const ArticleFunc = (props: {
                 borderWidth: 2,
                 borderRadius: 50,
                 backgroundColor: '#202020',
-              }}
-              // featuredTitle={title}
-              // featuredTitleStyle={featuredTitleStyle}
-            >
+              }}>
               <Card.Image
                 style={{borderRadius: 50}}
                 source={{uri: `${urlToImage}`}}
@@ -123,10 +116,7 @@ const ArticleFunc = (props: {
                 borderWidth: 5,
                 borderRadius: 50,
                 backgroundColor: 'white',
-              }}
-              // featuredTitle={title}
-              // featuredTitleStyle={featuredTitleStyle}
-            >
+              }}>
               <Card.Image
                 style={{borderRadius: 50}}
                 source={{uri: `${urlToImage}`}}

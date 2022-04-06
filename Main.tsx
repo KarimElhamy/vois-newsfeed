@@ -12,7 +12,7 @@ import App from './App';
 // const locale = Localization.locale;
 import {LogBox} from 'react-native';
 import {DetailsScreen} from './src/components/DetailsScreen';
-import ScreenA from './src/ScreenA';
+import ScreenA from './src/components/ScreenA';
 
 const darkTheme = {
   ...DefaultTheme,

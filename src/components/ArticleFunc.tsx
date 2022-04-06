@@ -74,7 +74,6 @@ const ArticleFunc = (props: {
       <View>
         <Pressable
           onPress={() => {
-            console.log(title);
             navigation.navigate('DetailsScreen', {
               item: {
                 itemDesc: description,

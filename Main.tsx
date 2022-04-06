@@ -12,7 +12,6 @@ import App from './App';
 // const locale = Localization.locale;
 import {LogBox} from 'react-native';
 import {DetailsScreen} from './src/components/DetailsScreen';
-import ScreenA from './src/components/ScreenA';
 
 const darkTheme = {
   ...DefaultTheme,
@@ -39,7 +38,6 @@ const Stack = createNativeStackNavigator();
 const config = {
   screens: {
     App: {path: 'app'},
-    ScreenA: {path: 'a'},
     ArticleFun: {path: 'articles'},
     DetailsScreen: {path: 'details/:id'},
   },
@@ -80,18 +78,6 @@ export default function Main() {
             }}
             name="DetailsScreen"
             component={DetailsScreen}
-          />
-          <Stack.Screen
-            options={{
-              title: 'screena',
-              headerShown: false,
-              headerTitleStyle: {
-                fontWeight: 'bold',
-                color: 'green',
-              },
-            }}
-            name="ScreenA"
-            component={ScreenA}
           />
         </Stack.Navigator>
       </NavigationContainer>

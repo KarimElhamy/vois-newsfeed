@@ -12,7 +12,7 @@ import App from './App';
 // const locale = Localization.locale;
 import {LogBox} from 'react-native';
 import {DetailsScreen} from './src/components/DetailsScreen';
-import ScreenA from './src/ScreenA';
+import ScreenA from './src/components/ScreenA';
 
 const darkTheme = {
   ...DefaultTheme,
@@ -41,9 +41,11 @@ const config = {
     App: {path: 'app'},
     ScreenA: {path: 'a'},
     ArticleFun: {path: 'articles'},
-    DetailsScreen: {path: 'details'},
+    DetailsScreen: {path: 'details/:id'},
   },
 };
+
+//newsfeed://path/id
 
 export default function Main() {
   LogBox.ignoreAllLogs();

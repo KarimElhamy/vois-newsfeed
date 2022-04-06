@@ -39,9 +39,11 @@ const config = {
   screens: {
     App: {path: 'app'},
     ArticleFun: {path: 'articles'},
-    DetailsScreen: {path: 'details'},
+    DetailsScreen: {path: 'details/:id'},
   },
 };
+
+//newsfeed://path/id
 
 export default function Main() {
   LogBox.ignoreAllLogs();

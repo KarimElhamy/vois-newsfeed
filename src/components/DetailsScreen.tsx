@@ -11,7 +11,9 @@ import {Text, Card} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {lang} from 'moment';
+import {getNews, getNewsLang} from '../news';
 
 const darkTheme = {
   ...DefaultTheme,
@@ -43,10 +45,10 @@ type ItemProps = {
 
 export type Info = {
   itemAuthor?: string;
-  itemImage?: string;
+  itemImage?: URL;
   itemTitle?: string;
   itemDate?: string;
-  itemUrl?: any;
+  itemUrl?: URL;
   itemDesc?: string;
 };
 
@@ -57,6 +59,8 @@ export const DetailsScreen: React.FC<ItemProps> = ({route}) => {
     styles;
   const scheme = useColorScheme();
   const navigation = useNavigation();
+
+  console.log('lang in details', global.language);
 
   return (
     <PaperProvider theme={scheme === 'dark' ? darkTheme : lightTheme}>
@@ -135,28 +139,55 @@ export const DetailsScreen: React.FC<ItemProps> = ({route}) => {
                     )}
 
                     <Text style={{color: 'white'}}>{itemDesc + '\n'}</Text>
-                    <Text
-                      style={{color: 'white', fontWeight: 'bold'}}
-                      onPress={() => Linking.openURL(itemUrl)}>
-                      {'To Read more, click here...'}
-                    </Text>
+                    {global.language === 'ar' ? (
+                      <Text
+                        style={{
+                          textAlign: 'right',
+                          color: 'white',
+                          fontWeight: 'bold',
+                        }}
+                        onPress={() => Linking.openURL(`${itemUrl}`)}>
+                        {'لقراءة المزيد، انقر هنا...'}
+                      </Text>
+                    ) : (
+                      <Text
+                        style={{color: 'white', fontWeight: 'bold'}}
+                        onPress={() => Linking.openURL(`${itemUrl}`)}>
+                        {'To Read more, click here...'}
+                      </Text>
+                    )}
                   </View>
                 </View>
               </Card>
 
               <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Text
-                  style={{
-                    alignContent: 'flex-start',
-                    color: 'white',
-                    fontWeight: 'bold',
-                    fontSize: 15,
-                    textAlign: 'right',
-                    alignSelf: 'flex-start',
-                    marginTop: 30,
-                  }}>
-                  Return to the Newsfeed
-                </Text>
+                {global.language === 'en' ? (
+                  <Text
+                    style={{
+                      alignContent: 'flex-start',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      fontSize: 15,
+                      textAlign: 'right',
+                      alignSelf: 'flex-start',
+                      marginTop: 30,
+                    }}>
+                    Return to the Newsfeed
+                  </Text>
+                ) : (
+                  <Text
+                    style={{
+                      alignContent: 'flex-start',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      fontSize: 15,
+                      textAlign: 'right',
+                      alignSelf: 'flex-start',
+                      marginTop: 30,
+                    }}>
+                    العودة إلى الأخبار
+                  </Text>
+                )}
               </TouchableOpacity>
             </View>
           </SafeAreaView>
@@ -205,27 +236,54 @@ export const DetailsScreen: React.FC<ItemProps> = ({route}) => {
                       source={{uri: `${itemImage}`}}
                     />
                     <Text style={{color: 'black'}}>{itemDesc + '\n'}</Text>
-                    <Text
-                      style={{color: 'black', fontWeight: 'bold'}}
-                      onPress={() => Linking.openURL(itemUrl)}>
-                      {'To Read more, click here...'}
-                    </Text>
+                    {global.language === 'ar' ? (
+                      <Text
+                        style={{
+                          textAlign: 'right',
+                          color: 'black',
+                          fontWeight: 'bold',
+                        }}
+                        onPress={() => Linking.openURL(`${itemUrl}`)}>
+                        {'لقراءة المزيد، انقر هنا...'}
+                      </Text>
+                    ) : (
+                      <Text
+                        style={{color: 'black', fontWeight: 'bold'}}
+                        onPress={() => Linking.openURL(`${itemUrl}`)}>
+                        {'To Read more, click here...'}
+                      </Text>
+                    )}
                   </View>
                 </View>
               </Card>
               <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Text
-                  style={{
-                    alignContent: 'flex-start',
-                    color: 'black',
-                    fontWeight: 'bold',
-                    fontSize: 15,
-                    textAlign: 'right',
-                    alignSelf: 'flex-start',
-                    marginTop: 30,
-                  }}>
-                  Return to the Newsfeed
-                </Text>
+                {global.language && global.language === 'en' ? (
+                  <Text
+                    style={{
+                      alignContent: 'flex-start',
+                      color: 'black',
+                      fontWeight: 'bold',
+                      fontSize: 15,
+                      textAlign: 'right',
+                      alignSelf: 'flex-start',
+                      marginTop: 30,
+                    }}>
+                    Return to the Newsfeed
+                  </Text>
+                ) : (
+                  <Text
+                    style={{
+                      alignContent: 'flex-start',
+                      color: 'black',
+                      fontWeight: 'bold',
+                      fontSize: 15,
+                      textAlign: 'right',
+                      alignSelf: 'flex-start',
+                      marginTop: 30,
+                    }}>
+                    العودة إلى الأخبار
+                  </Text>
+                )}
               </TouchableOpacity>
             </View>
           </SafeAreaView>

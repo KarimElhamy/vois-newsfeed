@@ -39,14 +39,14 @@ const lightTheme = {
 
 const ArticleFunc = (props: {
   article: {
-    title: any;
-    description: any;
-    publishedAt: any;
+    title: string;
+    description: string;
+    publishedAt: string;
     source: any;
-    urlToImage: any;
-    url: any;
-    content: any;
-    author: any;
+    urlToImage: URL;
+    url: URL;
+    content: string;
+    author: string;
   };
 }) => {
   const {
@@ -67,14 +67,11 @@ const ArticleFunc = (props: {
 
   const navigation = useNavigation();
 
-  const urlA = 'newsfeedTS://a';
-
   return (
     <PaperProvider theme={scheme === 'dark' ? darkTheme : lightTheme}>
       <View>
         <Pressable
           onPress={() => {
-            console.log(title);
             navigation.navigate('DetailsScreen', {
               item: {
                 itemDesc: description,

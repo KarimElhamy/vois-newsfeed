@@ -53,6 +53,8 @@ const App = () => {
 
   const scheme = useColorScheme();
 
+  global.language = lang;
+
   useEffect(() => {
     fetchNews();
   }, [refreshing]);
@@ -78,7 +80,7 @@ const App = () => {
     () => fetchNews();
   };
 
-  const searchData = (text: any) => {
+  const searchData = (text: string) => {
     const oldData = masterData;
 
     if (!text) {
@@ -94,13 +96,13 @@ const App = () => {
     }
   };
 
-  const langSelector = (value: any) => {
+  const langSelector = (value: string) => {
     setLang(value);
+    global.language = value;
     handleRefresh();
     console.log('the lang selected is', value);
   };
 
-  const urlA = 'newsfeedts://main/a';
   return (
     <PaperProvider theme={scheme === 'dark' ? darkTheme : lightTheme}>
       {/* <ScrollView> */}
